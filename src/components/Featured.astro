@@ -1,0 +1,157 @@
+---
+import { gameday } from '../data/gameday';
+---
+
+<section class="featured" id="gameday">
+  <div class="container">
+    <div class="grid">
+      <div class="text" data-reveal>
+        <p class="label">Featured project</p>
+        <h2><img src="/gameday/icon.svg" alt="" width="44" height="44" />GameDay</h2>
+        <p class="lede">The weekly game, minus the group-chat chaos.</p>
+        <p class="summary">{gameday.summary}</p>
+        <dl>
+          <div><dt>Role</dt><dd>Solo — product, design, web, Android, iOS and backend</dd></div>
+          <div><dt>Platforms</dt><dd>{gameday.platforms.join(' · ')}, on one shared API</dd></div>
+          <div><dt>Status</dt><dd>Live on the web; apps heading for the stores</dd></div>
+        </dl>
+        <div class="actions">
+          <a href="/gameday/" class="btn">Read the product story →</a>
+          <a href={gameday.url} class="link-arrow" target="_blank" rel="noopener">Open GameDay ↗</a>
+        </div>
+      </div>
+      <a href="/gameday/" class="shots" data-reveal aria-label="GameDay product page">
+        {gameday.heroShots.map((s, i) => <img src={s.src} alt={s.alt} class={`s${i}`} width="540" height="960" loading="lazy" />)}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured {
+    border-top: 1px solid var(--line);
+    padding: clamp(72px, 10vw, 120px) 0;
+    overflow: hidden;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin: 0 0 24px;
+  }
+  h2 img {
+    width: 0.7em;
+    height: 0.7em;
+  }
+  .lede {
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    margin: 0 0 12px;
+  }
+  .summary {
+    color: var(--muted);
+    margin: 0 0 32px;
+  }
+  dl {
+    margin: 0 0 36px;
+    border-top: 1px solid var(--line);
+  }
+  dl div {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+  dt {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+  dd {
+    margin: 0;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+    font-size: 15px;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #0a0b0a;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 0 #9fb320;
+    transition:
+      transform 0.1s,
+      box-shadow 0.1s;
+  }
+  .btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #9fb320;
+  }
+  .shots {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1.05;
+  }
+  .shots img {
+    position: absolute;
+    width: 52%;
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .s0 {
+    left: 0;
+    top: 8%;
+    transform: rotate(-6deg);
+  }
+  .s2 {
+    right: 0;
+    top: 8%;
+    transform: rotate(6deg);
+  }
+  .s1 {
+    left: 24%;
+    top: 0;
+    z-index: 1;
+  }
+  .shots:hover .s0 {
+    transform: rotate(-9deg) translateX(-4%);
+  }
+  .shots:hover .s2 {
+    transform: rotate(9deg) translateX(4%);
+  }
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .shots {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+</style>
