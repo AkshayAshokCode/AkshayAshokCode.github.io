@@ -1,135 +1,116 @@
-// Add, remove or reorder projects here — the site updates automatically.
-// `pattern` picks the animated art shown inside the phone mockup.
-// Set `image` to a file in /public (e.g. '/shots/notepad.webp') to show a real screenshot instead.
+// GameDay is the featured project; everything in `otherWork` is listed below it.
 
-export type Pattern = 'rings' | 'bars' | 'grid' | 'orbit' | 'wave' | 'stack';
-
-export interface Project {
-  title: string;
-  kind: string;
-  description: string;
-  tags: string[];
-  repo: string;
-  stars?: number;
-  accent: [string, string];
-  pattern: Pattern;
-  image?: string;
-}
-
-export interface Resource {
-  title: string;
-  stat: string;
-  description: string;
-  repo: string;
-}
+export const gameday = {
+  url: 'https://itsgameday.vercel.app',
+  tagline: 'The weekly game, minus the group-chat chaos.',
+  summary:
+    'One link in the WhatsApp group handles voting, headcount, the waitlist, teams and payments for friend groups who play every week.',
+  facts: [
+    { label: 'Role', value: 'Solo — product, design, Android, iOS, web and backend' },
+    { label: 'Platforms', value: 'Android · iOS · Web, on one shared API' },
+    { label: 'Status', value: 'Live on the web, native apps in pre-release' },
+    { label: 'Since', value: 'July 2026' },
+  ],
+  problem:
+    '“Football this Saturday?” Forty-seven messages later: three ins, a maybe, nobody sure which turf, and the organiser counting heads on their fingers. Nine of twelve turn up, and the chasing for turf money begins.',
+  tour: [
+    {
+      image: '/gameday/group.jpg',
+      alt: 'GameDay group screen showing the next session with 4 of 12 confirmed and a streak leaderboard',
+      title: 'The week at a glance',
+      body: 'Opening a group shows the next session, the live headcount, who has confirmed and who is on a streak.',
+    },
+    {
+      image: '/gameday/voting.jpg',
+      alt: 'Session screen with I’m in and I’m out buttons, a guest counter and the confirmed list',
+      title: 'One tap to commit',
+      body: 'Players tap in or out and can bring guests. Once the turf is full, extra players join a waitlist and move up automatically when someone drops out.',
+    },
+    {
+      image: '/gameday/day-poll.jpg',
+      alt: 'Day poll listing three candidate days with vote bars and a lock-in button',
+      title: 'Let the group pick the day',
+      body: 'When nobody can agree on a day, everyone marks the days that work and the organiser locks in the winner.',
+    },
+    {
+      image: '/gameday/squads.jpg',
+      alt: 'Attendance list and two randomised squads, Team A and Team B',
+      title: 'Fair teams in one tap',
+      body: 'Teams are shuffled so captains, keepers and positions are spread evenly, and the organiser can still move players by hand.',
+    },
+    {
+      image: '/gameday/payments.jpg',
+      alt: 'Payments screen with a UPI QR code, amount owed and a collection progress bar',
+      title: 'Settling up',
+      body: 'Each player’s share is worked out when the session ends. They pay the collector by UPI QR code or deep link, and a live bar shows how much has come in.',
+    },
+  ],
+  engineering: [
+    {
+      title: 'One API for every client',
+      body: '34 typed operations in Next.js route handlers. The OpenAPI contract the native apps build against is generated from the same zod schemas that validate requests.',
+    },
+    {
+      title: 'Permissions in the database',
+      body: 'Supabase Postgres with row-level security. Clients can only read their own groups, and every write goes through the API.',
+    },
+    {
+      title: 'Native apps',
+      body: 'Android in Kotlin and Jetpack Compose, iOS in Swift and SwiftUI. Invite links open straight into the app through App Links and Universal Links.',
+    },
+    {
+      title: 'One identity everywhere',
+      body: 'Firebase sign-in (Google, plus Apple on iOS) is exchanged for a Supabase-compatible token, so the same account works on all three platforms.',
+    },
+    {
+      title: 'Reminders and push',
+      body: 'Kickoff, wrap-up and payment reminders run on Postgres cron every 15 minutes and go out through FCM and APNs.',
+    },
+    {
+      title: 'A small design system',
+      body: '“Floodlit”: a turf at night. Everything stays dark except the one action that matters, and moments like the squad reveal get a small animation.',
+    },
+  ],
+  stack: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI', 'Next.js', 'TypeScript', 'Supabase', 'Postgres', 'Firebase'],
+};
 
 const gh = (name: string) => `https://github.com/AkshayAshokCode/${name}`;
 
-export const featured: Project[] = [
+export const otherWork = [
   {
     title: 'MediaKit',
-    kind: 'Android SDK',
-    description:
-      'A modular Android media SDK. Pick images from the gallery or camera, then crop them — all through a single fluent API.',
-    tags: ['Kotlin', 'SDK', 'Camera', 'Crop'],
-    repo: gh('MediaKit-android'),
-    stars: 2,
-    accent: ['#7c5cff', '#22d3ee'],
-    pattern: 'stack',
+    description: 'Android SDK for picking images from the gallery or camera and cropping them, through one fluent API.',
+    tech: 'Kotlin · SDK',
+    url: gh('MediaKit-android'),
   },
   {
     title: 'DevFocus',
-    kind: 'IntelliJ / Android Studio plugin',
-    description:
-      'A minimal Pomodoro timer built right into Android Studio and IntelliJ IDEA, so developers stay focused without switching tools.',
-    tags: ['Kotlin', 'JetBrains Plugin', 'Productivity'],
-    repo: gh('DevFocus'),
-    stars: 1,
-    accent: ['#ff5c8a', '#ffb347'],
-    pattern: 'orbit',
+    description: 'A Pomodoro timer that lives inside Android Studio and IntelliJ IDEA.',
+    tech: 'Kotlin · IntelliJ plugin',
+    url: gh('DevFocus'),
   },
   {
     title: 'Android Sensors',
-    kind: 'Android app',
-    description:
-      'A professional sensor toolkit exploring accelerometer, gyroscope and every hardware and software sensor Android exposes.',
-    tags: ['Jetpack Compose', 'Sensors', 'Navigation'],
-    repo: gh('AndroidSensors'),
-    stars: 3,
-    accent: ['#00e0a4', '#3b82f6'],
-    pattern: 'rings',
+    description: 'A toolkit for reading and visualising every hardware and software sensor Android exposes.',
+    tech: 'Kotlin · Compose',
+    url: gh('AndroidSensors'),
   },
   {
     title: 'NotePad',
-    kind: 'Android app',
-    description:
-      'A notes app built with Jetpack Compose, Room, Coroutines, Dagger Hilt and Canvas, following MVVM with clean architecture.',
-    tags: ['Compose', 'Room', 'Hilt', 'MVVM'],
-    repo: gh('NotePad'),
-    stars: 12,
-    accent: ['#facc15', '#f97316'],
-    pattern: 'grid',
-  },
-];
-
-export const more: Project[] = [
-  {
-    title: 'Battery Wallpaper',
-    kind: 'Android app',
-    description:
-      'Updates your wallpaper in real time from battery level and charging state, via a foreground service that survives the app being killed.',
-    tags: ['Foreground Service', 'Compose', 'Canvas'],
-    repo: gh('AndroidBattery'),
-    accent: ['#22c55e', '#a3e635'],
-    pattern: 'bars',
-  },
-  {
-    title: 'Image → Text → Speech',
-    kind: 'Android app',
-    description:
-      'Extract text from images with ML text recognition and listen to it instantly in 30+ languages.',
-    tags: ['Java', 'ML Kit', 'Text-to-Speech'],
-    repo: gh('Image-to-Text-Text-to-Speech-App'),
-    stars: 3,
-    accent: ['#38bdf8', '#818cf8'],
-    pattern: 'wave',
-  },
-  {
-    title: 'YouTube Android',
-    kind: 'Android app',
-    description:
-      'Implementation of YouTube API features on Android — player, live chat, playlists and streaming workflows.',
-    tags: ['Kotlin', 'YouTube API', 'Streaming'],
-    repo: gh('YoutubeAndroid'),
-    stars: 3,
-    accent: ['#ef4444', '#f472b6'],
-    pattern: 'stack',
-  },
-];
-
-export const resources: Resource[] = [
-  {
-    title: 'Android Design Patterns',
-    stat: '20+',
-    description: 'Creational, structural and behavioral patterns implemented in Kotlin for Android.',
-    repo: gh('Android-Design-Patterns'),
+    description: 'A notes app built with Compose, Room, Coroutines and Hilt, following MVVM and clean architecture.',
+    tech: 'Kotlin · Compose',
+    url: gh('NotePad'),
   },
   {
     title: 'Android Architectures',
-    stat: '5',
-    description: 'MVC, MVP, MVVM, MVI and Clean Architecture — each built as the same note-taking app.',
-    repo: gh('Android-Architectures'),
+    description: 'The same note-taking app built five ways: MVC, MVP, MVVM, MVI and Clean Architecture.',
+    tech: 'Kotlin · Reference',
+    url: gh('Android-Architectures'),
   },
   {
-    title: 'Android Interview Cheat Sheet',
-    stat: '∞',
-    description: 'Kotlin, architecture, Jetpack and system design questions for Android interviews.',
-    repo: gh('Android-Interview-Questions-cheat-sheet'),
-  },
-  {
-    title: 'iOS Architectures',
-    stat: 'iOS',
-    description: 'Architecture patterns explored on the Swift side of mobile.',
-    repo: gh('iOS-Architectures'),
+    title: 'Android Design Patterns',
+    description: '20+ creational, structural and behavioural patterns implemented in Kotlin for Android.',
+    tech: 'Kotlin · Reference',
+    url: gh('Android-Design-Patterns'),
   },
 ];

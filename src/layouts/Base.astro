@@ -17,12 +17,12 @@ const description = site.intro;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.site} />
-    <meta name="theme-color" content="#07070c" />
+    <meta name="theme-color" content="#0a0b0a" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <script is:inline>
@@ -32,8 +32,6 @@ const description = site.intro;
     </script>
   </head>
   <body>
-    <div class="progress" aria-hidden="true"></div>
-    <div class="cursor" aria-hidden="true"></div>
     <slot />
     <script>
       import '../scripts/main';

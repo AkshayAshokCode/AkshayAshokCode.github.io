@@ -1,0 +1,42 @@
+---
+import { site } from '../data/site';
+
+const links = [
+  { label: 'GitHub', href: site.github },
+  { label: 'X', href: site.twitter },
+  { label: 'LinkedIn', href: site.linkedin },
+  { label: 'Email', href: site.email && `mailto:${site.email}` },
+].filter((l) => l.href);
+---
+
+<footer class="footer">
+  <div class="container inner">
+    <p>Want to talk about GameDay or mobile work? Reach me on {links.map((l, i) => (
+      <>
+        {i > 0 && (i === links.length - 1 ? ' or ' : ', ')}
+        <a href={l.href} class="link-arrow" target="_blank" rel="noopener">{l.label}</a>
+      </>
+    ))}.</p>
+    <p class="copy">© {new Date().getFullYear()} {site.name}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 48px 0 56px;
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+  }
+  p {
+    margin: 0;
+    font-size: 15px;
+  }
+  .copy {
+    color: var(--muted);
+  }
+</style>

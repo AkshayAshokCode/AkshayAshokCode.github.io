@@ -1,0 +1,44 @@
+---
+import { site } from '../data/site';
+---
+
+<header class="container header">
+  <a href="#top" class="name">{site.name}</a>
+  <nav aria-label="Main">
+    <a href="#gameday">GameDay</a>
+    <a href="#other-work">Other work</a>
+    <a href={site.github} target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    font-size: 15px;
+  }
+  .name {
+    font-weight: 600;
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    gap: clamp(16px, 3vw, 32px);
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover {
+    color: var(--text);
+  }
+  @media (max-width: 480px) {
+    nav a:first-child {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import { otherWork } from '../data/projects';
+---
+
+<section class="other" id="other-work">
+  <div class="container">
+    <p class="label" data-reveal>Other work</p>
+    <h2 data-reveal>Open source</h2>
+    <ul>
+      {
+        otherWork.map((p) => (
+          <li data-reveal>
+            <a href={p.url} target="_blank" rel="noopener">
+              <span class="title">{p.title}</span>
+              <span class="desc">{p.description}</span>
+              <span class="tech">{p.tech}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .other {
+    border-top: 1px solid var(--line);
+    padding: clamp(72px, 10vw, 120px) 0;
+  }
+  h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin: 0 0 32px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  a {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    gap: 8px 32px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  a:hover .title {
+    color: var(--accent);
+  }
+  .title {
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .desc {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .tech {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  @media (max-width: 760px) {
+    a {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

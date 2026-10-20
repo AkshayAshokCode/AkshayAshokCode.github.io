@@ -1,18 +1,13 @@
 :root {
-  --bg: #07070c;
-  --bg-2: #0e0e17;
-  --surface: #13131f;
-  --line: rgba(255, 255, 255, 0.09);
-  --text: #f4f4f8;
-  --muted: #9a9ab0;
-  --accent: #7c5cff;
-  --accent-2: #22d3ee;
-  --grad: linear-gradient(120deg, var(--accent), var(--accent-2));
-  --font-display: 'Syne', system-ui, sans-serif;
+  --bg: #0a0b0a;
+  --surface: #121412;
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #ededea;
+  --muted: #8d918b;
+  --accent: #e4ff3a;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --gutter: clamp(16px, 4vw, 48px);
-  --radius: 22px;
+  --gutter: clamp(16px, 4vw, 40px);
   color-scheme: dark;
 }
 
@@ -20,14 +15,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
 }
 
 html {
@@ -43,12 +30,10 @@ body {
   font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
 img {
@@ -58,155 +43,49 @@ img {
 
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: #000;
 }
 
 .container {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
 
-.section {
-  padding: clamp(96px, 14vw, 180px) 0;
-  position: relative;
-}
-
-.eyebrow {
+.label {
   font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  margin: 0 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.eyebrow::before {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: var(--grad);
+  margin: 0 0 16px;
 }
 
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(40px, 7vw, 96px);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  margin: 0 0 clamp(48px, 7vw, 96px);
+.link-arrow {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
 }
-.section-title .word {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-  padding-bottom: 0.08em;
-  margin-right: 0.22em;
-}
-.section-title .word > span {
-  display: inline-block;
-}
-
-.grad-text {
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 15px;
-  transition: background 0.3s, border-color 0.3s, color 0.3s;
-  will-change: transform;
-}
-.btn-primary {
-  background: var(--text);
-  color: var(--bg);
-}
-.btn-primary:hover {
-  background: var(--accent-2);
-}
-.btn-ghost {
-  border: 1px solid var(--line);
-}
-.btn-ghost:hover {
+.link-arrow:hover {
   border-color: var(--text);
 }
 
-.chip {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-/* Scroll progress */
-.progress {
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: 2px;
-  background: var(--grad);
-  transform-origin: 0 50%;
-  transform: scaleX(0);
-  z-index: 100;
-}
-
-/* Custom cursor (fine pointers only) */
-.cursor {
-  display: none;
-}
-@media (pointer: fine) {
-  .cursor {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    margin: -5px 0 0 -5px;
-    border-radius: 50%;
-    background: #fff;
-    mix-blend-mode: difference;
-    pointer-events: none;
-    z-index: 200;
-    transition: width 0.25s, height 0.25s, margin 0.25s;
-  }
-  .cursor.is-hover {
-    width: 56px;
-    height: 56px;
-    margin: -28px 0 0 -28px;
-  }
-}
-
-/* Initial states for intro animation — only when JS + motion are allowed */
-.js [data-intro] {
+/* Fade-up on scroll, only when JS is running and motion is allowed */
+.js [data-reveal] {
   opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.js .char {
-  transform: translateY(110%);
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
   html {
     scroll-behavior: auto;
   }
