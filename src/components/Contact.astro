@@ -1,0 +1,102 @@
+---
+import { site } from '../data/site';
+
+const links = [
+  { label: 'GitHub', href: site.github },
+  { label: 'X / Twitter', href: site.twitter },
+  { label: 'LinkedIn', href: site.linkedin },
+  { label: 'Email', href: site.email && `mailto:${site.email}` },
+].filter((l) => l.href);
+
+const primary = site.email ? `mailto:${site.email}` : site.github;
+---
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <p class="eyebrow">Contact</p>
+    <a href={primary} class="big" data-reveal target={site.email ? undefined : '_blank'} rel="noopener">
+      Let's build<br /><span class="grad-text">something.</span>
+      <span class="circle" data-magnetic aria-hidden="true">↗</span>
+    </a>
+
+    <footer>
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} target="_blank" rel="noopener">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p>© {new Date().getFullYear()} {site.name}</p>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-bottom: 48px;
+  }
+  .big {
+    display: block;
+    position: relative;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 9vw, 150px);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    margin-bottom: clamp(96px, 14vw, 180px);
+  }
+  .circle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: clamp(64px, 9vw, 128px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--text);
+    color: var(--bg);
+    display: grid;
+    place-items: center;
+    font-size: clamp(24px, 3vw, 44px);
+    letter-spacing: 0;
+    transition: background 0.3s;
+  }
+  .big:hover .circle {
+    background: var(--accent-2);
+  }
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  footer a:hover {
+    color: var(--text);
+  }
+  footer p {
+    margin: 0;
+  }
+  @media (max-width: 640px) {
+    .circle {
+      position: static;
+      margin-top: 24px;
+      display: grid;
+    }
+  }
+</style>

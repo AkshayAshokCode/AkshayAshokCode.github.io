@@ -1,0 +1,18 @@
+---
+// Splits a heading into words so each can slide up on scroll.
+// Wrap a word in *asterisks* to give it the gradient.
+interface Props {
+  text: string;
+}
+const words = Astro.props.text.split(' ');
+---
+
+<h2 class="section-title" data-split aria-label={Astro.props.text.replaceAll('*', '')}>
+  {
+    words.map((w) => (
+      <span class="word" aria-hidden="true">
+        <span class={w.startsWith('*') ? 'grad-text' : undefined}>{w.replaceAll('*', '')}</span>
+      </span>
+    ))
+  }
+</h2>

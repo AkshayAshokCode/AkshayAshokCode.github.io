@@ -1,0 +1,186 @@
+---
+import { featured, more } from '../data/projects';
+import DeviceArt from './DeviceArt.astro';
+import SectionTitle from './SectionTitle.astro';
+---
+
+<section class="section" id="work">
+  <div class="container">
+    <p class="eyebrow">Selected work</p>
+    <SectionTitle text="Things I've *built*" />
+
+    <div class="featured">
+      {
+        featured.map((p, i) => (
+          <article class="row" data-reveal>
+            <a href={p.repo} target="_blank" rel="noopener" class="row-art" aria-label={`${p.title} on GitHub`}>
+              <DeviceArt project={p} />
+            </a>
+            <div class="row-text">
+              <span class="index">{String(i + 1).padStart(2, '0')}</span>
+              <p class="kind">{p.kind}</p>
+              <h3>{p.title}</h3>
+              <p class="desc">{p.description}</p>
+              <ul class="tags">
+                {p.tags.map((t) => (
+                  <li class="chip">{t}</li>
+                ))}
+              </ul>
+              <a href={p.repo} target="_blank" rel="noopener" class="link">
+                View on GitHub {p.stars ? <span class="stars">★ {p.stars}</span> : null}
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <h3 class="more-title" data-reveal>More builds</h3>
+    <div class="grid">
+      {
+        more.map((p) => (
+          <a href={p.repo} target="_blank" rel="noopener" class="card" data-reveal>
+            <DeviceArt project={p} size="sm" />
+            <div class="card-body">
+              <p class="kind">{p.kind}</p>
+              <h4>
+                {p.title} <span aria-hidden="true">↗</span>
+              </h4>
+              <p class="desc">{p.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(80px, 12vw, 160px);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(32px, 6vw, 96px);
+    align-items: center;
+  }
+  .row:nth-child(even) .row-art {
+    order: 2;
+  }
+  .row-text {
+    position: relative;
+  }
+  .index {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(80px, 12vw, 160px);
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line);
+    position: absolute;
+    top: -0.55em;
+    right: 0;
+    pointer-events: none;
+  }
+  .kind {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-2);
+    margin: 0 0 12px;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px;
+  }
+  .desc {
+    color: var(--muted);
+    margin: 0 0 24px;
+  }
+  .tags {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.3s;
+  }
+  .link:hover {
+    border-color: var(--text);
+  }
+  .arrow {
+    transition: transform 0.3s;
+  }
+  .link:hover .arrow {
+    transform: translateX(6px);
+  }
+  .stars {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #facc15;
+  }
+
+  .more-title {
+    margin-top: clamp(120px, 16vw, 200px);
+    font-size: clamp(28px, 3.5vw, 44px);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 24px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius);
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.4s;
+  }
+  .card:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-6px);
+  }
+  .card :global(.art) {
+    border: 0;
+    border-radius: 0;
+  }
+  .card-body {
+    padding: 24px 24px 28px;
+  }
+  h4 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    margin: 0 0 10px;
+  }
+  .card .desc {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+    .row:nth-child(even) .row-art {
+      order: 0;
+    }
+  }
+</style>
