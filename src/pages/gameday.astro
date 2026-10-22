@@ -137,7 +137,7 @@ import PlayIcon from '../components/PlayIcon.astro';
       <section class="section">
         <div class="wrap">
           <p class="eyebrow" data-reveal>Under the hood</p>
-          <h2 data-reveal>Three native clients, one backend</h2>
+          <h2 data-reveal>How it’s built</h2>
           <div class="eng">
             {
               g.engineering.map((e) => (
@@ -196,11 +196,13 @@ import PlayIcon from '../components/PlayIcon.astro';
       </section>
     </main>
 
-    <footer class="wrap foot">
+    <footer class="wrap">
+      <div class="foot">
       <p>Designed and built by <a href="/" class="u">{site.name}</a></p>
       <nav aria-label="GameDay legal">
         {g.legal.map((l) => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
       </nav>
+      </div>
     </footer>
   </div>
 </Base>
@@ -464,6 +466,9 @@ import PlayIcon from '../components/PlayIcon.astro';
     gap: clamp(32px, 7vw, 96px);
     align-items: center;
   }
+  .feature:nth-child(even) {
+    grid-template-columns: 1fr minmax(220px, 300px);
+  }
   .feature:nth-child(even) img {
     order: 2;
   }
@@ -717,7 +722,11 @@ import PlayIcon from '../components/PlayIcon.astro';
     .extras {
       grid-template-columns: 1fr;
     }
-    .feature {
+    .feature,
+    .feature:nth-child(even) {
+      grid-template-columns: 1fr;
+    }
+    .design {
       grid-template-columns: 1fr;
     }
     .feature:nth-child(even) img {
