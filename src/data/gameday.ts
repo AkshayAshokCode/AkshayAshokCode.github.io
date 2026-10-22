@@ -5,13 +5,14 @@ const shot = (name: string) => `/gameday/shots/${name}.jpg`;
 
 export const gameday = {
   url: 'https://itsgameday.vercel.app',
+  playStore: 'https://play.google.com/store/apps/details?id=app.itsgameday.android',
   oneLiner: 'GameDay organises your weekly game, so the group chat can go back to banter.',
   summary: 'One link in the group chat handles who’s in, which day, the teams and who has paid.',
   tagline: 'Under the floodlights. The weekly game, minus the group-chat chaos.',
   audience:
     'For friend groups who play a regular game together — 5-a-side football, cricket, badminton — and the one person who always ends up organising it.',
   platforms: ['Web', 'Android', 'iOS'],
-  availability: 'Live on the web. The Android and iOS apps are heading for a public Play Store and App Store launch.',
+  availability: 'On Google Play and the web. The iOS app is on its way to the App Store.',
 
   heroShots: [
     { src: shot('01-group'), alt: 'Group screen with a live day poll and the next game' },
@@ -212,10 +213,11 @@ export const gameday = {
     { date: 'Jul 2026', text: 'First version: groups, invite links, Google sign-in, voting with guests and a waitlist, day polls, random teams, UPI payments, turfs and streaks.' },
     { date: 'Oct 2026', text: 'Native Android and iOS apps on a shared API, with push notifications, invite links that open the app, and kickoff and payment reminders.' },
     { date: 'Oct 2026', text: 'Balanced teams with captains, keepers and positions; production moved to Mumbai; analytics and crash reporting.' },
+    { date: 'Oct 2026', text: 'Android app live on Google Play.' },
     { date: '20 Oct 2026', text: 'Pay before, after or at the turf; whole-turf prices split to the rupee; “Paid ₹X to Y?” after UPI; smarter day polls.' },
   ],
 
-  next: ['Player ratings after each game, and player cards built from them.', 'Public launch on the Play Store and App Store.'],
+  next: ['Player ratings after each game, and player cards built from them.', 'Public launch on the App Store.'],
 
   legal: [
     { label: 'Privacy', href: 'https://itsgameday.vercel.app/privacy' },

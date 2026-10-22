@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { gameday as g } from '../data/gameday';
 import { site } from '../data/site';
+import PlayIcon from '../components/PlayIcon.astro';
 ---
 
 <Base
@@ -15,7 +16,7 @@ import { site } from '../data/site';
   <div class="gd">
     <header class="wrap top">
       <a href="/gameday/" class="brand"><img src="/gameday/icon.svg" alt="" width="28" height="28" />GameDay</a>
-      <a href={g.url} class="pop pop-sm" target="_blank" rel="noopener">Open GameDay</a>
+      <a href={g.playStore} class="pop pop-sm" target="_blank" rel="noopener">Get the app</a>
     </header>
 
     <main>
@@ -25,7 +26,10 @@ import { site } from '../data/site';
           <h1>The weekly game, minus the <span>group-chat chaos.</span></h1>
           <p class="sub">{g.oneLiner} {g.summary}</p>
           <div class="cta">
-            <a href={g.url} class="pop" target="_blank" rel="noopener">Open GameDay on the web</a>
+            <div class="buttons">
+              <a href={g.playStore} class="pop" target="_blank" rel="noopener"><PlayIcon />Get it on Google Play</a>
+              <a href={g.url} class="ghost" target="_blank" rel="noopener">Open on the web</a>
+            </div>
             <p class="avail">{g.availability}</p>
           </div>
           <div class="hero-shots">
@@ -184,7 +188,10 @@ import { site } from '../data/site';
       <section class="final">
         <div class="wrap">
           <h2 data-reveal>Stop counting heads in WhatsApp.</h2>
-          <a href={g.url} class="pop" target="_blank" rel="noopener" data-reveal>Open GameDay</a>
+          <div class="buttons" data-reveal>
+            <a href={g.playStore} class="pop" target="_blank" rel="noopener"><PlayIcon />Get it on Google Play</a>
+            <a href={g.url} class="ghost" target="_blank" rel="noopener">Open on the web</a>
+          </div>
         </div>
       </section>
     </main>
@@ -264,6 +271,32 @@ import { site } from '../data/site';
   .pop:active {
     transform: translate(4px, 4px);
     box-shadow: 0 0 0 #8a9a1f;
+  }
+  .pop :global(svg) {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: -2px;
+  }
+  .ghost {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: border-color 0.2s;
+  }
+  .ghost:hover {
+    border-color: var(--text);
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 16px;
   }
   .pop-sm {
     font-size: 14px;
