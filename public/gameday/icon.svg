@@ -1,17 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- GameDay brand mark: a ball under floodlights. Night background, a
-       floodlight glow from above, the ball as a floodlight-yellow disc with
-       the pitch-dark pentagon patch. Reads as "yellow dot on dark" at 16px,
-       reads as a football at anything bigger. -->
-  <defs>
-    <radialGradient id="beam" cx="0.5" cy="0" r="0.9">
-      <stop offset="0" stop-color="#e8ff47" stop-opacity="0.28"/>
-      <stop offset="0.55" stop-color="#e8ff47" stop-opacity="0.06"/>
-      <stop offset="1" stop-color="#e8ff47" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="512" height="512" rx="112" fill="#0a0e0b"/>
-  <rect width="512" height="512" rx="112" fill="url(#beam)"/>
-  <circle cx="256" cy="276" r="150" fill="#e8ff47"/>
-  <polygon points="256,214 315,257 292.5,326 219.5,326 197,257" fill="#0a0e0b"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- GameDay favicon: the small-size form of the app icon (a floodlight
+       lighting the pitch): the 3x3 lamp head on its pole with a faint beam,
+       floodlight yellow on night. Same shape as the Android status-bar icon. -->
+  <rect width="24" height="24" rx="5.2" fill="#0a0e0b"/>
+  <g fill="#e8ff47" transform="translate(12 12) scale(0.86) translate(-12 -12)">
+    <polygon points="10.9,12.4 13.6,5.2 23.6,13.2 18.2,23.6" opacity="0.4"/>
+    <polygon points="6.3,12.6 8.3,12.6 9.0,23.0 5.6,23.0"/>
+    <g transform="rotate(20 7.4 7.0)">
+      <rect x="2.25" y="1.85" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="5.95" y="1.85" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="9.65" y="1.85" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="2.25" y="5.55" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="5.95" y="5.55" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="9.65" y="5.55" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="2.25" y="9.25" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="5.95" y="9.25" width="2.9" height="2.9" rx="0.7"/>
+      <rect x="9.65" y="9.25" width="2.9" height="2.9" rx="0.7"/>
+    </g>
+  </g>
 </svg>

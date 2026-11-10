@@ -7,7 +7,7 @@ import { gameday } from '../data/gameday';
     <div class="grid">
       <div class="text" data-reveal>
         <p class="label">Featured project</p>
-        <h2><img src="/gameday/icon.svg" alt="" width="44" height="44" />GameDay</h2>
+        <h2><img src="/gameday/icon-192.png" alt="" width="44" height="44" />GameDay</h2>
         <p class="lede">The weekly game, minus the group-chat chaos.</p>
         <p class="summary">{gameday.summary}</p>
         <dl>
@@ -52,6 +52,8 @@ import { gameday } from '../data/gameday';
   h2 img {
     width: 0.7em;
     height: 0.7em;
+    /* The full app icon is square and full-bleed; round it like a phone icon. */
+    border-radius: 22%;
   }
   .lede {
     font-size: clamp(20px, 2.2vw, 26px);

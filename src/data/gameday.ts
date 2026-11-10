@@ -130,6 +130,7 @@ export const gameday = {
 
   design: [
     { title: 'A turf at night', body: 'Everything is dark except what matters, with one floodlight-yellow action per screen.' },
+    { title: 'A floodlit icon', body: 'A floodlight tower lighting the pitch, fitted so no phone’s icon shape crops it. At tiny sizes it becomes just the lamp head on its pole.' },
     { title: 'Buttons that press in', body: 'NeoPop buttons physically depress, and numbers count up instead of jumping.' },
     { title: 'Small celebrations', body: 'Locking in your spot, the squad reveal, settling the last payment and streak milestones each get a moment.' },
     { title: 'Mobile-first', body: 'Because that’s where the group chat is. Every screen is checked at large font sizes and on narrow phones.' },
