@@ -37,7 +37,7 @@ const url = new URL(Astro.url.pathname, Astro.site);
     {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
     <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
     <meta name="theme-color" content={themeColor} />
-    <link rel="icon" type="image/svg+xml" href={icon} />
+    <link rel="icon" type={icon.endsWith(".svg") ? "image/svg+xml" : "image/png"} href={icon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={`https://fonts.googleapis.com/css2?${fonts}&display=swap`} rel="stylesheet" />
