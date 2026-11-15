@@ -12,7 +12,7 @@ export const gameday = {
   audience:
     'For friend groups who play a regular game together — 5-a-side football, cricket, badminton — and the one person who always ends up organising it.',
   platforms: ['Web', 'Android', 'iOS'],
-  availability: 'On Google Play and the web. The iOS app is on its way to the App Store.',
+  availability: 'On Google Play and the web. The native iOS app is built and ready for its first App Store submission.',
 
   heroShots: [
     { src: shot('01-group'), alt: 'Group screen with a live day poll and the next game' },
@@ -78,7 +78,7 @@ export const gameday = {
       title: 'Fair teams in one tap',
       points: [
         'Form teams deals everyone into two squads with a card-shuffle reveal — random, but balanced.',
-        'Volunteer captains are split one per team, goalkeepers and preferred positions are spread evenly, and team sizes stay within one.',
+        'Volunteer captains are split one per team, goalkeepers and preferred positions are spread evenly, players’ ratings even out the strength of the two sides, and team sizes stay within one.',
         'The organiser can then move or swap players, add a late arrival and share the team sheet to WhatsApp.',
       ],
     },
@@ -120,17 +120,20 @@ export const gameday = {
   ],
 
   extras: [
-    { title: 'Turfs, remembered', body: 'Save the turfs your group plays at with a map pin. Sessions link straight to Google Maps.' },
+    { title: 'Feedback after the game', body: 'For 48 hours after a game, rate anyone you played with: 1–5 stars plus “Liked” and “Work on” tags. Always anonymous, no free text, and “My game” on your profile shows only you how you’re doing.' },
+    { title: 'Player pages', body: 'Tap any name to see that player’s position, attendance and streak, plus their UPI ID with a Copy button — or “Ask for it” if they haven’t added one.' },
+    { title: 'Turfs, remembered', body: 'Save the turfs your group plays at with a map pin. “Map” opens the turf’s real Google Maps listing, or tap Call to ring them.' },
     { title: 'Suggestions, not side-chats', body: 'Players suggest a different turf or time, and the organiser applies or dismisses it in one tap.' },
-    { title: 'Invites that just work', body: 'One link opens the app if it’s installed, or the store or website, and lands you in the group. Sign in with Google or Apple.' },
-    { title: 'Notifications that matter', body: 'New game, day picked, teams out, off the waitlist, payment due, kickoff in 2 hours. Each type can be turned off.' },
+    { title: 'Invites that just work', body: 'One link opens the app on Android or iPhone if it’s installed, or the store or website, and lands you in the group. Sign in with Google or Apple.' },
+    { title: 'Notifications that matter', body: 'New game, day picked, teams out, off the waitlist, payment due, kickoff in 2 hours, your feedback is in. Asked for right at sign-in, and each type can be turned off.' },
     { title: 'Group admin', body: 'Admins edit group details, add or remove admins and remove members.' },
     { title: 'Safety and privacy', body: 'Report and block, public privacy and terms pages, and full account deletion from the app or the web.' },
   ],
 
   design: [
     { title: 'A turf at night', body: 'Everything is dark except what matters, with one floodlight-yellow action per screen.' },
-    { title: 'A floodlit icon', body: 'A floodlight tower lighting the pitch, fitted so no phone’s icon shape crops it. At tiny sizes it becomes just the lamp head on its pole.' },
+    { title: 'A floodlit icon', body: 'A floodlight tower beside a football pitch at night, its beam lighting the goal end. The pitch fades into the dark before the edges, so no phone’s icon shape crops it. At tiny sizes it becomes just the lamp head on its pole.' },
+    { title: 'The floodlight comes on', body: 'The apps and website open on the floodlight switched off; after a dark beat the lamps, beam and pitch warm up together, in about a second. One curve shared by Android, iOS and the web, and skipped with Reduce Motion.' },
     { title: 'Buttons that press in', body: 'NeoPop buttons physically depress, and numbers count up instead of jumping.' },
     { title: 'Small celebrations', body: 'Locking in your spot, the squad reveal, settling the last payment and streak milestones each get a moment.' },
     { title: 'Mobile-first', body: 'Because that’s where the group chat is. Every screen is checked at large font sizes and on narrow phones.' },
@@ -165,6 +168,10 @@ export const gameday = {
       title: 'Mark no-shows, not attendees',
       body: 'Attendance defaults to everyone turned up, so the organiser only unticks the few who didn’t.',
     },
+    {
+      title: 'Feedback from friends, without the fallout',
+      body: 'Criticism from friends stings, so feedback is anonymous, private to the player, and tags only — “Work on” tags are worded as advice, in amber rather than red. Teams still need an honest number, so stars balance teams even when a player keeps their rating hidden.',
+    },
   ],
 
   engineering: [
@@ -193,6 +200,10 @@ export const gameday = {
       body: 'Product analytics are recorded server-side for every platform, with crash reporting in the apps. IP-based location lookup is turned off everywhere.',
     },
     {
+      title: 'Tested on every change',
+      body: 'Unit tests cover what would hurt most if it broke — exact payment splits, balanced teams, feedback summaries, streaks — and run with a type check and an API-contract check on every pull request.',
+    },
+    {
       title: 'Tested across platforms',
       body: 'A separate staging database, Playwright end-to-end tests in the browser, and Android emulators and the iOS simulator driven by UI automation against staging.',
     },
@@ -205,9 +216,10 @@ export const gameday = {
 
   numbers: [
     { value: '3', label: 'platforms: web, Android, iOS' },
-    { value: '50+', label: 'merged pull requests across web, Android and iOS' },
-    { value: '30+', label: 'API operations' },
-    { value: '21', label: 'database migrations' },
+    { value: '90+', label: 'merged pull requests across web, Android and iOS' },
+    { value: '45', label: 'API operations' },
+    { value: '26', label: 'database migrations' },
+    { value: '120+', label: 'unit tests, run in CI on every pull request' },
   ],
 
   timeline: [
@@ -216,9 +228,13 @@ export const gameday = {
     { date: 'Oct 2026', text: 'Balanced teams with captains, keepers and positions; production moved to Mumbai; analytics and crash reporting.' },
     { date: 'Oct 2026', text: 'Android app live on Google Play.' },
     { date: '20 Oct 2026', text: 'Pay before, after or at the turf; whole-turf prices split to the rupee; “Paid ₹X to Y?” after UPI; smarter day polls.' },
+    { date: '24 Oct 2026', text: 'Turf contact: open the turf’s Google Maps listing or call it in one tap.' },
+    { date: '10 Nov 2026', text: 'A new floodlight icon, replacing the generic ball.' },
+    { date: '14 Nov 2026', text: 'Post-game feedback and player pages, on the web, Android and iPhone. Ratings now balance teams.' },
+    { date: '15 Nov 2026', text: 'The floodlight comes on: a launch animation across all three platforms, and the iOS app ready for the App Store.' },
   ],
 
-  next: ['Player ratings after each game, and player cards built from them.', 'Public launch on the App Store.'],
+  next: ['Player cards built from ratings, and box cricket feedback tags.', 'Play Store production rollout and the App Store launch.'],
 
   legal: [
     { label: 'Privacy', href: 'https://itsgameday.vercel.app/privacy' },
