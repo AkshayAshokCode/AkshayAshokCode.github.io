@@ -15,7 +15,7 @@ import PlayIcon from '../components/PlayIcon.astro';
 >
   <div class="gd">
     <header class="wrap top">
-      <a href="/gameday/" class="brand"><img src="/gameday/icon.svg" alt="" width="28" height="28" />GameDay</a>
+      <a href="/gameday/" class="brand"><img src="/gameday/icon-192.png" alt="" width="28" height="28" />GameDay</a>
       <a href={g.playStore} class="pop pop-sm" target="_blank" rel="noopener">Get the app</a>
     </header>
 
@@ -251,6 +251,9 @@ import PlayIcon from '../components/PlayIcon.astro';
     font-weight: 700;
     font-size: 20px;
     text-decoration: none;
+  }
+  .brand img {
+    border-radius: 7px;
   }
 
   /* NeoPop button, as in the app */
