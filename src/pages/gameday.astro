@@ -382,7 +382,8 @@ import PlayIcon from '../components/PlayIcon.astro';
     justify-content: center;
     align-items: flex-start;
     margin-top: clamp(48px, 7vw, 80px);
-    height: clamp(300px, 48vw, 560px);
+    /* Grow to fit the lowest card so none is clipped by the section border, with room before it */
+    padding-bottom: clamp(56px, 8vw, 104px);
   }
   .hero-shots img {
     width: clamp(160px, 24vw, 300px);
