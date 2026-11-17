@@ -32,7 +32,7 @@ import PlayIcon from '../components/PlayIcon.astro';
             </div>
             <p class="avail">{g.availability}</p>
           </div>
-          <div class="hero-shots">
+          <div class="hero-shots" data-animate>
             {g.heroShots.map((s, i) => <img src={s.src} alt={s.alt} class={`h${i}`} width="540" height="960" />)}
           </div>
         </div>
@@ -382,8 +382,7 @@ import PlayIcon from '../components/PlayIcon.astro';
     justify-content: center;
     align-items: flex-start;
     margin-top: clamp(48px, 7vw, 80px);
-    /* Grow to fit the lowest card so none is clipped by the section border, with room before it */
-    padding-bottom: clamp(56px, 8vw, 104px);
+    height: clamp(300px, 48vw, 560px);
   }
   .hero-shots img {
     width: clamp(160px, 24vw, 300px);
@@ -449,6 +448,13 @@ import PlayIcon from '../components/PlayIcon.astro';
       opacity: 0;
       transform: rotate(0deg) translateX(-70%);
     }
+  }
+  /* Hold the cards at their start frame until the section scrolls into view (main.ts adds .is-in) */
+  :global(.js) .hero-shots img {
+    animation-play-state: paused;
+  }
+  :global(.js) .hero-shots.is-in img {
+    animation-play-state: running;
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-shots img {
