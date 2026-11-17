@@ -389,6 +389,12 @@ import PlayIcon from '../components/PlayIcon.astro';
     height: auto;
     border-radius: 22px;
     box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9);
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+    /* 'backwards' only holds the start frame during the delay, so hover can take over afterwards */
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation-delay: 0.25s;
+    animation-fill-mode: backwards;
   }
   .h0,
   .h2 {
@@ -404,6 +410,50 @@ import PlayIcon from '../components/PlayIcon.astro';
   .h1 {
     position: relative;
     z-index: 1;
+  }
+  /* Scoped under .hero-shots so these outrank the shared .hero-shots img rule */
+  .hero-shots .h0 {
+    animation-name: fan-left;
+  }
+  .hero-shots .h2 {
+    animation-name: fan-right;
+  }
+  .hero-shots .h1 {
+    animation-name: rise;
+    animation-delay: 0s;
+  }
+  .hero-shots:hover .h0 {
+    transform: rotate(-8deg) translateX(4%);
+  }
+  .hero-shots:hover .h2 {
+    transform: rotate(8deg) translateX(-4%);
+  }
+  .hero-shots:hover .h1 {
+    transform: translateY(-8px);
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+  }
+  @keyframes fan-left {
+    from {
+      opacity: 0;
+      transform: rotate(0deg) translateX(70%);
+    }
+  }
+  @keyframes fan-right {
+    from {
+      opacity: 0;
+      transform: rotate(0deg) translateX(-70%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-shots img {
+      animation: none;
+      transition: none;
+    }
   }
 
   /* Sections */
